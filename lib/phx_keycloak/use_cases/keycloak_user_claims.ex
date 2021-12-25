@@ -16,7 +16,10 @@ defmodule PhxKeycloak.UseCases.KeycloakUserClaims do
     ]
 
     opts = [ssl: [{:verify, :verify_none}]]
-    resp = HTTPoison.post(keycloak_userinfo_uri(params), {:form, data}, @headers, opts)
+
+    resp =
+      HTTPoison.post(keycloak_userinfo_uri(params), {:form, data}, @headers, opts)
+      |> IO.inspect(label: "THREE")
 
     case resp do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
