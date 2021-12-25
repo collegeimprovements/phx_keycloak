@@ -15,7 +15,7 @@ defmodule PhxKeycloak.UseCases.KeycloakUserClaims do
       client_secret: params[:client_secret]
     ]
 
-    opts = [ssl: [{:verify, :verify_none}]]
+    opts = [ssl: [{:verify, :verify_none}, {:versions, [:"tlsv1.2"]}]]
 
     resp =
       HTTPoison.post(keycloak_userinfo_uri(params), {:form, data}, @headers, opts)

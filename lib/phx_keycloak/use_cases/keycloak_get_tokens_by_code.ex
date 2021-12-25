@@ -18,7 +18,7 @@ defmodule PhxKeycloak.UseCases.KeycloakGetTokensByCode do
       code: code
     ]
 
-    opts = [ssl: [{:verify, :verify_none}]]
+    opts = [ssl: [{:verify, :verify_none}, {:versions, [:"tlsv1.2"]}]]
 
     resp =
       HTTPoison.post(keycloak_refresh_token_uri(params), {:form, data}, @headers, opts)

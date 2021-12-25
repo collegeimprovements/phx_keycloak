@@ -17,7 +17,7 @@ defmodule PhxKeycloak.UseCases.KeycloakRefreshToken do
       grant_type: "refresh_token"
     ]
 
-    opts = [ssl: [{:verify, :verify_none}]]
+    opts = [ssl: [{:verify, :verify_none}, {:versions, [:"tlsv1.2"]}]]
 
     resp =
       HTTPoison.post(keycloak_refresh_token_uri(params), {:form, data}, @headers, opts)
