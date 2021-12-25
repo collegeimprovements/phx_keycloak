@@ -18,7 +18,6 @@ defmodule PhxKeycloak.UseCases.KeycloakLogout do
     opts = [ssl: [{:verify, :verify_none}, {:versions, [:"tlsv1.2"]}]]
 
     HTTPoison.post(keycloak_refresh_token_uri(params), {:form, data}, @headers, opts)
-    |> IO.inspect(label: "FOUR")
 
     :ok
   end

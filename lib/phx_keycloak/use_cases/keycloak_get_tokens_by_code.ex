@@ -20,9 +20,7 @@ defmodule PhxKeycloak.UseCases.KeycloakGetTokensByCode do
 
     opts = [ssl: [{:verify, :verify_none}, {:versions, [:"tlsv1.2"]}]]
 
-    resp =
-      HTTPoison.post(keycloak_refresh_token_uri(params), {:form, data}, @headers, opts)
-      |> IO.inspect(label: "HERE......")
+    resp = HTTPoison.post(keycloak_refresh_token_uri(params), {:form, data}, @headers, opts)
 
     case resp do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
