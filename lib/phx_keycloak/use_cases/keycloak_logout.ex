@@ -15,7 +15,8 @@ defmodule PhxKeycloak.UseCases.KeycloakLogout do
       client_id: params[:client_id]
     ]
 
-    HTTPoison.post(keycloak_refresh_token_uri(params), {:form, data}, @headers)
+    opts = [ssl: [{:verify, :verify_none}]]
+    HTTPoison.post(keycloak_refresh_token_uri(params), {:form, data}, @headers, opts)
 
     :ok
   end
